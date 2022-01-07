@@ -27,7 +27,9 @@ class SongsService {
     }
 
     addSong(id) {
-
+        const res = await sandBoxApi.post('', id)
+        ProxyState.playlist = [...ProxyState.playlist, new Song(res.data)]
+        console.log('ProxyState playlist', ProxyState.playlist);
     }
 
     removeSong(id) {

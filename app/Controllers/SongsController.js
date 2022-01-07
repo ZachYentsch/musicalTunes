@@ -38,11 +38,26 @@ export default class SongsController {
         }
     }
 
-    addSong(id) {
+    async addSong(id) {
+        try {
+            window.event.preventDefault()
+            let form = window.event.target
+            const newPlaylist = {
+                title: form.title.value,
+                artist: form.artist.value,
+                album: form.album.value
 
+            }
+            console.log('new player obj', newPlaylist)
+            await service.addSong(newPlaylist)
+            form.reset()
+        } catch (error) {
+            console.log(error.message)
+        }
     }
-
     removeSong(id) {
 
     }
 }
+
+
